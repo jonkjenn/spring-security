@@ -700,6 +700,7 @@ public class NimbusJwtDecoderTests {
 		RestOperations restOperations = mock(RestOperations.class);
 		Cache cache = mock(Cache.class);
 		given(cache.get(eq(JWK_SET_URI), eq(String.class))).willReturn(JWK_SET);
+		given(cache.get(eq(JWK_SET_URI))).willReturn(new SimplerValueWrapper(JWK_SET));
 		given(restOperations.exchange(any(RequestEntity.class), eq(String.class)))
 				.willReturn(new ResponseEntity<>(NEW_KID_JWK_SET, HttpStatus.OK));
 
